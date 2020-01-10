@@ -1,0 +1,9 @@
+systax: glob
+.classpath
+.project
+.settings
+allure-results
+target
+test-output
+.allure
+.hg
