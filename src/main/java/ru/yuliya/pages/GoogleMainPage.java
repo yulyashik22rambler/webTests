@@ -1,25 +1,19 @@
 package ru.yuliya.pages;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import ru.yuliya.utils.CommonMethods;
+
+import java.util.List;
 
 public class GoogleMainPage extends CommonMethods {
 	@FindBy(name = "q")
 	private WebElement searchInput;
-
-	private List<WebElement> firsTresult;
-	private String xpathLinks = "//div[@class='r']/a/h3";
+	private By linksXpath = By.xpath("//div[@class='r']/a/h3");
 	private String hintAtt = "title";
 	private String hintValue = "Поиск";
 
@@ -30,8 +24,8 @@ public class GoogleMainPage extends CommonMethods {
 	}
 
 	public GoogleMainPage checkEmptySearchResults() throws InterruptedException {
-		firsTresult = driver.findElements(By.xpath(xpathLinks));
-		Assert.assertTrue(firsTresult.size() == 0, "Search result must be 0");
+		List<WebElement> firstResult = driver.findElements(linksXpath);
+		Assert.assertTrue(firstResult.size() == 0, "Search result must be 0");
 		return this;
 	}
 

@@ -16,7 +16,7 @@ public class GoogleComPageTest extends InitTestPage {
     private GoogleSearchPage queryPage;
     private GoogleMainPage mainPage;
 
-    @Issue("issue-1")
+    @Issue("Issue-1")
     @Description("Check google search by title and surname, name and middle name")
     @Test(enabled = true, description="Check search results by send key word")
     public void checkSearchResultsBySendKeyWord() throws InterruptedException {
@@ -26,17 +26,19 @@ public class GoogleComPageTest extends InitTestPage {
         queryPage.openURL(urlQ);
         queryPage.assertPageIsOpened(urlQ);
 
-        pageLogging("Step 2.", "Search by title 'Sberbunk'", "Results are verified");
-        queryPage.checkInputFieldExist().searchByParameter("Sberbunk").verifySearchResultsExist("Сбербанк")
-                .verifySearchResultsExist("Sberbank");
+        pageLogging("Step 2.", "Search by title 'Sberbank'", "Results are verified");
+        queryPage.checkInputFieldExist().searchByParameter("Sberbank")
+                .verifySearchResultsExist("Сбербанк")
+                .verifySearchResultsExist("для физических лиц");
 
         pageLogging("Step 3.", "Search by title 'German Gref'", "Results are verified");
-        queryPage.searchByParameter("German Gref Oskarovich").verifySearchResultsExist("Герман Греф")
+        queryPage.searchByParameter("German Gref Oskarovich")
+                .verifySearchResultsExist("Герман Греф")
                 .verifySearchResultsExist("Греф Герман Оскарович");
         log.log(Level.INFO, "Test 1 has run!");
     }
 
-    @Issue("issue-2")
+    @Issue("Issue-2")
     @Description("Check the browser hint 'Поиск' which appear when do mouse over the input on google page")
     @Test(enabled = true)
     public void checkHintRiseByMouseOverTnput() throws InterruptedException {
@@ -51,7 +53,7 @@ public class GoogleComPageTest extends InitTestPage {
         log.log(Level.INFO, "Test 2 has run!");
     }
 
-    @Issue("issue-3")
+    @Issue("Issue-3")
     @Description("After clicking on the logo in the upper-left part of the page the empty page is displayed")
     @Test(enabled = true)
     public void getEmptyPageByCklickOnLogo() throws InterruptedException {
@@ -68,7 +70,7 @@ public class GoogleComPageTest extends InitTestPage {
         log.log(Level.INFO, "Test 3 has run!");
     }
 
-    @Issue("issue-4")
+    @Issue("Issue-4")
     @Description("Check drop down hints by typyng word 'hg push'")
     @Test(enabled = true)
     public void checkDropDownByTypingWord() throws InterruptedException {
@@ -79,7 +81,10 @@ public class GoogleComPageTest extends InitTestPage {
         queryPage.assertPageIsOpened(urlQ);
 
         pageLogging("Step 2.", "Write a word and check google input hints", "Рints were checked");
-        queryPage.checkInputFieldExist().searchBySearchWord("hg push").checkHintsInDropDown("hg push");
+        queryPage.checkInputFieldExist()
+                .searchBySearchWord("hg push")
+                .checkHintsInDropDown("hg push")
+                .chooseHint(3);
         log.log(Level.INFO, "Test 4 has run!");
     }
 

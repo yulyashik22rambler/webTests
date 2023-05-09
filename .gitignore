@@ -1,0 +1,9 @@
+/allure-results/
+.classpath
+.project
+.settings
+target
+test-output
+.allure
+.hg
+.idea
