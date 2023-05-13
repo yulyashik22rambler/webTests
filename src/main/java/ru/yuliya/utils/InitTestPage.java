@@ -16,7 +16,6 @@ public abstract class InitTestPage {
 
 	@BeforeClass(description = "Configure initial resources before class")
 	protected void initial() throws IOException {
-
 		driver = WebDriverUtils.createAndStartWebService();
 		log = WebDriverUtils.getLog();
 	}

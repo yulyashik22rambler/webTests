@@ -40,8 +40,8 @@ public class WebDriverUtils {
                 switch (properties.getProperty(PROP_BROWSER)) {
                 case "chrome":
                     if (properties.containsKey(PROP_CHROME_DRIVER_PATH)) {
-                        driver = new ChromeDriver();
                         System.setProperty(PROP_CHROME_DRIVER_PATH, properties.getProperty(PROP_CHROME_DRIVER_PATH));
+                        driver = new ChromeDriver();
                         log.log(Level.INFO, "Begin of Chrome Driver!");
                     }
                     break;

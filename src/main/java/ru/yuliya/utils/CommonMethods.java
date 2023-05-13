@@ -42,7 +42,7 @@ public abstract class CommonMethods {
 		Assert.assertTrue(element.getAttribute("href").contains(link), "Link is not " + link);
 	}
 
-	protected void checkPersonPageHeder(List<String> headers, String path) {
+	protected void checkPersonPageHeader(List<String> headers, String path) {
 		List<WebElement> headerList = driver.findElements(By.xpath(path));
 		for (int i = 0; i < headerList.size(); i++) {
 			assertElementIsDisplayedWithText(headerList.get(i), headers.get(i));
@@ -51,7 +51,7 @@ public abstract class CommonMethods {
 
 	protected void assertElementIsDisplayedWithText(WebElement element, String text) {
 		element.isDisplayed();
-		log.log(Level.INFO, "Expected value \'" + element.getText() + "\'" + ", Actual value \'" + text + "\'");
+		log.log(Level.INFO, "Expected value '" + element.getText() + "'" + ", Actual value '" + text + "'");
 		Assert.assertEquals(element.getText(), text);
 	}
 
@@ -67,14 +67,14 @@ public abstract class CommonMethods {
 	}
 
 	protected long countSearchResults(String text, List<WebElement> elemntsList) {
-		checkeWebElementsDispalyedAndPrint(text, elemntsList);
+		checkWebElementsDisplayedAndPrint(text, elemntsList);
 		long count = elemntsList.stream().filter(checkResults(text)).count();
-		System.out.println(count);
+		log.log(Level.INFO, String.valueOf(count));
 		return count;
 	}
 
 	protected void checkEachElementWithTextIsDisplayed(String word, List<WebElement> elementsList) {
-		checkeWebElementsDispalyedAndPrint(word, elementsList);
+		checkWebElementsDisplayedAndPrint(word, elementsList);
 	}
 
 	protected void mouseOver(WebElement element) {
@@ -98,8 +98,8 @@ public abstract class CommonMethods {
 		return p -> p.getText().contains(text);
 	}
 
-	private void checkeWebElementsDispalyedAndPrint(String text, List<WebElement> elemntsList) {
-		elemntsList.stream().filter(checkResults(text)).forEach(e -> System.out.println(e.getText()));
-		elemntsList.stream().filter(checkResults(text)).forEach(e -> e.isDisplayed());
+	private void checkWebElementsDisplayedAndPrint(String text, List<WebElement> elementsList) {
+		elementsList.stream().filter(checkResults(text)).forEach(e -> log.log(Level.INFO, e.getText()));
+		elementsList.stream().filter(checkResults(text)).forEach(e -> e.isDisplayed());
 	}
 }

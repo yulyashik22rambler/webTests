@@ -1,0 +1,6 @@
+# Default ignored files
+systax: glob
+/shelf/
+/workspace.xml
+.idea
+/allure-results

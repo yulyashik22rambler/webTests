@@ -12,12 +12,14 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<!--		<maven.compiler.source>1.8</maven.compiler.source>-->
+		<!--		<maven.compiler.target>1.8</maven.compiler.target>-->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<allure.version>1.3.6</allure.version>
+		<!--allure.version>1.3.6</allure.version-->
 		<aspectj.version>1.8.10</aspectj.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -41,12 +43,12 @@
 			<artifactId>testng</artifactId>
 			<version>6.14.3</version>
 		</dependency>
-		<dependency>
+		<!--dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency-->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
@@ -55,7 +57,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.2</version>
+			<version>1.18.12</version>
 			<scope>provided</scope>
 		</dependency>
 
