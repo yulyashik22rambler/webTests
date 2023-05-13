@@ -27,7 +27,8 @@ public class GoogleComPageTest extends InitTestPage {
         queryPage.assertPageIsOpened(urlQ);
 
         pageLogging("Step 2.", "Search by title 'Sberbank'", "Results are verified");
-        queryPage.checkInputFieldExist().searchByParameter("Sberbank")
+        queryPage.checkInputFieldExist()
+                .searchByParameter("Sberbank")
                 .verifySearchResultsExist("Сбербанк")
                 .verifySearchResultsExist("для физических лиц");
 
