@@ -1,3 +1,4 @@
+systax: glob
 /allure-results/
 .classpath
 .project
