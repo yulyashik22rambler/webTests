@@ -11,11 +11,9 @@ import ru.yuliya.utils.CommonMethods;
 import java.util.List;
 
 public class GoogleMainPage extends CommonMethods {
-	@FindBy(name = "q")
+	@FindBy(xpath = ".//*[@name='q']")
 	private WebElement searchInput;
 	private By linksXpath = By.xpath("//div[@class='r']/a/h3");
-	private String hintAtt = "title";
-	private String hintValue = "Поиск";
 
 	public GoogleMainPage(WebDriver driver) {
 		super(driver);
@@ -34,7 +32,7 @@ public class GoogleMainPage extends CommonMethods {
 		return this;
 	}
 
-	public GoogleMainPage checkPhraseForHint() {
+	public GoogleMainPage checkPhraseForHint(String hintAtt, String hintValue) {
 		checkElementByAttribute(searchInput, hintAtt, hintValue);
 		return this;
 	}

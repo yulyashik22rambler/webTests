@@ -32,8 +32,8 @@ public abstract class CommonMethods {
 	}
 
 	protected void checkImageElement(WebElement element, String elementName, String alt) {
-		Assert.assertTrue(element.isDisplayed(), "Element" + elementName + " is not displayed!");
-		Assert.assertTrue(element.getAttribute("alt").contains(alt), "Alt text is not " + alt);
+		Assert.assertTrue(element.isDisplayed(), "Element" + elementName + " should be displayed!");
+		Assert.assertTrue(element.getAttribute("alt").contains(alt), "Alt text should be displayed" + alt);
 
 	}
 
@@ -102,4 +102,5 @@ public abstract class CommonMethods {
 		elementsList.stream().filter(checkResults(text)).forEach(e -> log.log(Level.INFO, e.getText()));
 		elementsList.stream().filter(checkResults(text)).forEach(e -> e.isDisplayed());
 	}
+
 }

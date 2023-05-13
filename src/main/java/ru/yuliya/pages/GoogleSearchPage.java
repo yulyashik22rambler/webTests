@@ -10,6 +10,7 @@ import org.testng.Assert;
 import ru.yuliya.utils.CommonMethods;
 
 import java.util.List;
+import java.util.Optional;
 
 public class GoogleSearchPage extends CommonMethods {
 
@@ -17,7 +18,7 @@ public class GoogleSearchPage extends CommonMethods {
     private WebElement searchInput;
     @FindBy(xpath = "//div[@class='logo']")
     private WebElement logoElement;
-    By googleSearchResultsXpath = By.xpath(".//div[*[text()='Результаты поиска']]//a");
+    By googleSearchResultsXpath = By.xpath(".//h3[contains(@class,'MBeuO')]");
     By hintsXpath = By.xpath(".//div[@role='option']");
 
 
@@ -39,7 +40,13 @@ public class GoogleSearchPage extends CommonMethods {
         Assert.assertTrue(count > 0, "Search result must be more then 0");
         return this;
     }
-
+    public WikipediaPage clickOnResultByText(String text) throws InterruptedException {
+        Thread.sleep(3000);
+        List<WebElement> searchResultByWord = driver.findElements(googleSearchResultsXpath);
+        Optional<WebElement> first = searchResultByWord.stream().filter(el -> el.getText().equals(text)).findFirst();
+        first.get().click();
+        return returnNewPage(WikipediaPage.class);
+    }
     public GoogleSearchPage checkLogoExist() {
         assertElementIsDisplayed(logoElement);
         return this;
