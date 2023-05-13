@@ -15,9 +15,11 @@ public class WikipediaPage extends CommonMethods {
     @FindBy(xpath = ".//*[@class='mw-logo-container']/img[@alt='Wikipedia']")
     public WebElement logoElement;
 
-    @FindBy(xpath = ".//*[@class='mw-logo-container']/img[@alt='The Free Encyclopedia']")
+    @FindBy(xpath = ".//*[contains(@class,'logo-container')]/img[@alt='The Free Encyclopedia']")
     public WebElement logoElementDescr;
 
+    @FindBy(xpath = ".//h1/span[contains(text(),'Hollywood')]")
+    public WebElement pageHeader;
     public WikipediaPage checkIsDisplayed(WebElement webElement) {
         assertElementIsDisplayed(webElement);
         return this;

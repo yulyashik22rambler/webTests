@@ -32,10 +32,11 @@ public class GoogleComSearchTests extends InitTestPage {
                 .verifySearchResultsExist("Hollywood - Wikipedia");
 
         pageLogging("Step 3.", "Click on Hollywood - Wikipedia", "Results are verified");
-       WikipediaPage wikipediaPage= queryPage.clickOnResultByText("Hollywood - Wikipedia");
-       wikipediaPage
-               .checkIsDisplayed(wikipediaPage.logoElement)
-               .checkIsDisplayed(wikipediaPage.logoElementDescr);
+        WikipediaPage wikiPage = queryPage.clickOnResultByText("Hollywood - Wikipedia");
+        wikiPage
+                .checkIsDisplayed(wikiPage.logoElement)
+                .checkIsDisplayed(wikiPage.logoElementDescr)
+                .checkIsDisplayed(wikiPage.pageHeader);
         log.log(Level.INFO, "Test 1 has run!");
     }
 
@@ -51,7 +52,7 @@ public class GoogleComSearchTests extends InitTestPage {
 
         pageLogging("Step 2.", "Check the browser hint 'Search' in the input attribute", "The attribute was checked");
         mainPage.checkInputFieldExist()
-                .checkPhraseForHint("title","Поиск");
+                .checkPhraseForHint("title", "Поиск");
         log.log(Level.INFO, "Test 2 has run!");
     }
 
